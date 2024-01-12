@@ -3,71 +3,40 @@
     "path" : "/",
     "security" : {
       "module" : "EMBEDED",
-      "classPath" : [ ],
       "config" : {
-        "users" : []
+        "users" : [ {
+          "username" : "admin",
+          "password" : "pwd",
+          "roles" : [ "admin" ]
+        }, {
+          "username" : "support",
+          "password" : "pwd",
+          "roles" : [ "support" ]
+        }, {
+          "username" : "user",
+          "password" : "pwd"
+        } ]
       },
-      "authorizationConfig" : {
-        "users" : [ ],
-        "roles" : [ ]
-      }
+      "classPath" : [ ]
     },
     "langFolder" : "${webswing.configDir}/lang",
     "homeDir" : "${user.dir}",
     "allowedCorsOrigins" : [ "*" ],
-    "adminConsoleUrl" : "http://localhost:8090"
+    "adminConsoleUrl" : "http://localhost:8190"
   },
   "/zap" : {
     "path" : "/zap",
     "webFolder" : "",
     "icon" : "icon.png",
     "security" : {
-      "module" : "EMBEDED",
-      "classPath" : [ ],
+      "module" : "org.webswing.security.modules.openidconnect.OpenIDConnectSecurityModule",
+      "classPath" : [ "${webswing.rootDir}/security/oidc/*" ],
       "config" : {
-        "users" : [
-          {
-            "username" : "team-1",
-            "password" : "KIGnsd2H",
-            "roles": ["admin"]
-          }, {
-            "username" : "team-2",
-            "password" : "fPCNTds2",
-            "roles": ["admin"]
-          }, {
-            "username" : "team-3",
-            "password" : "wM88Rosn",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-4",
-            "password" : "UjqwjxlH",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-5",
-            "password" : "JXKZva4V",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-6",
-            "password" : "8RT1RbQl0j",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-7",
-            "password" : "RlsdAxB",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-8",
-            "password" : "DHHs22gj",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-9",
-            "password" : "2rLi66q",
-            "roles": ["admin"]
-           }, {
-            "username" : "team-10",
-            "password" : "UVZZhy2i",
-            "roles": ["admin"]
-           } 
-        ]
+        "importDiscoveryJson" : "https://dev-gineczyeeahckorh.us.auth0.com/.well-known/openid-configuration",
+        "callbackUrl" : "http://localhost:8180/zap/login",
+        "clientId" : "51T2gkW2UlXNuHetHv7bUu5IxIL6GEbw",
+        "clientSecret" : "mL7xsLyy5nSZjKcSL-qGjKj3l_hq1f7zobTch6JxJqD_-1Rz7HbdovQIyqKdR15B",
+        "usernameAttributeName" : "email"
       },
       "authorizationConfig" : {
         "users" : [ ],

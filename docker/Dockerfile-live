@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -q -y --fix-missing \
 WORKDIR /zap-src
 
 # Pull the ZAP repo and build ZAP with weekly add-ons
-RUN git clone --depth 1 https://github.com/zaproxy/zaproxy.git && \
+RUN git clone https://github.com/zaproxy/zaproxy.git && \
 	cd zaproxy && \
 	ZAP_WEEKLY_ADDONS_NO_TEST=true ./gradlew :zap:prepareDistWeekly
 
