@@ -1,0 +1,7 @@
+# syntax=docker/dockerfile:1
+# This dockerfile builds the zap stable release
+FROM --platform=linux/amd64 ghcr.io/zaproxy/zaproxy:stable
+
+WORKDIR /zap
+
+COPY --link --chown=1000:1000 webswing.config /zap/webswing/
